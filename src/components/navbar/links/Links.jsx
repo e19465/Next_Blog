@@ -42,25 +42,6 @@ const Links = ({colors, theme}) => {
     const isAdmin = true;
     const isAuthenticated = true;
 
-    // const links = [
-    //     {
-    //         title: "Home",
-    //         path: "/"
-    //     },
-    //     {
-    //         title: "About",
-    //         path: "/about"
-    //     },
-    //     {
-    //         title: "Blog",
-    //         path: "/blog"
-    //     },
-    //     {
-    //         title: "Contact",
-    //         path: "/contact"
-    //     },
-    // ]
-
   return (
     <LinksMain>
         {links.map((link) => (

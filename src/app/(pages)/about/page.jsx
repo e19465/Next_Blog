@@ -121,6 +121,8 @@ const LeftParagraph = styled.p`
   font-size: 17px;
   font-weight: ${props => props.mode === "light" && 700};
   color: ${props => props.mode === "light" && props.colors.gray[300]};
+  margin-top: 20px;
+
 `;
 
 const LeftBottom = styled.div`

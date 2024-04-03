@@ -8,7 +8,7 @@ import AboutImage from "../../../../public/assests/contact.png";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
 /* || STYLED COMPONENTS */
-const AboutPageMain = styled.div`
+const ContactPageMain = styled.div`
   background-color: ${(props) =>
     props.mode === "dark" ? props.colors.primary[600] : "#fff"};
   height: 100%;
@@ -177,7 +177,7 @@ const Contact = () => {
 
   /////////////////////////////////////////////////////////////////////////////
   return (
-    <AboutPageMain colors={colors} mode={mode}>
+    <ContactPageMain colors={colors} mode={mode}>
       <Left>
         <LeftContent>
           <StyledForm colors={colors} mode={mode}>
@@ -198,7 +198,7 @@ const Contact = () => {
           loading="lazy"
         />
       </Right>
-    </AboutPageMain>
+    </ContactPageMain>
   );
 };
 
