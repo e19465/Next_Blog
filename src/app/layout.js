@@ -9,6 +9,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "./theme";
 import StateProvider from "@/redux/provider";
 import SidebarDrawer from "@/components/sidebar/SidebarDrawer";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,20 +48,33 @@ export default function RootLayout({ children }) {
 
 function WrappedLayout({ children }) {
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const mode = theme.palette.mode;
+  const colors = tokens(mode);
   return (
     <div
       style={{
         width: "100%",
-        height: "100%",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: colors.primary[100],
+        backgroundColor: colors.gray[100],
+        position: "relative",
       }}
     >
       <Navbar />
       <SidebarDrawer />
-      {children}
+      <main
+        style={{
+          flexGrow: 1,
+          zIndex: 5,
+          overflow: "hidden",
+          paddingBottom: "30px",
+          background: mode === "dark" ? colors.primary[600] : "#fff",
+        }}
+      >
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

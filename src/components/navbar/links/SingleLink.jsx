@@ -10,10 +10,10 @@ const StyledIconButton = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
-    width: 80px;
+    width: 90px;
     padding: 10px;
     border-radius: 5px;
-    font-size: 17px;
+    font-size: 20px;
     transition: all 0.5s;
     margin-right: 7px;
     
@@ -24,7 +24,7 @@ const StyledIconButton = styled.button`
     )};
 
     background-color: ${props => props.active === "true" ? (
-        props.theme.palette.mode === "dark" ? props.colors.greenAccent[500] : props.colors.blueAccent[200]
+        props.theme.palette.mode === "dark" ? props.colors.greenAccent[500] : props.colors.blueAccent[400]
     ) : (
         props.theme.palette.mode === "dark" ? props.colors.primary[500] : props.colors.gray[900]
     )};

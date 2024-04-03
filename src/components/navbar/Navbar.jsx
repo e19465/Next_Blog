@@ -14,8 +14,11 @@ const NavMain = styled.div`
     justify-content: space-between;
     padding: 10px 50px;
     height: 60px;
-    background-color: ${props => props.mode === "dark" ? props.colors.primary[600] : props.colors.gray[800] };
-
+    background-color: ${props => props.mode === "dark" ? props.colors.primary[600] : "#fff" };
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
 
     /* RESPONSIVE */
     ${xs({

@@ -4,6 +4,12 @@
 /* VARELLA ROUND */
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* || GLOBAL VARIABLES */
 :root {
     /* COLORS */
@@ -16,6 +22,7 @@
     --FONT_RALEWAY: "Raleway", sans-serif;
     --FONT_VARELA_ROUND: "Varela Round", sans-serif;
 }
+
 
 /* scrollbar design */
 ::-webkit-scrollbar{
