@@ -1,0 +1,35 @@
+/* RALEWAY */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* VARELLA ROUND */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* || GLOBAL VARIABLES */
+:root {
+    /* COLORS */
+    --MAIN_BG_DARK_COLOR: #0D0C22;
+    --MAIN_BG_LIGHT_CLOR: #2D2B42;
+    --TEXT_LIGHT_COLOR: #fff;
+    --TEXT_DARK_COLOR: #222;
+
+    /* FONT FAMILIES */
+    --FONT_RALEWAY: "Raleway", sans-serif;
+    --FONT_VARELA_ROUND: "Varela Round", sans-serif;
+}
+
+/* scrollbar design */
+::-webkit-scrollbar{
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track{
+background-color: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb{
+background-color: #888;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background-color: #555;
+}
