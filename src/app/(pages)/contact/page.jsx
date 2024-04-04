@@ -106,6 +106,10 @@ const StyledInput = styled.input`
     font-family: var(--FONT_RALEWAY);
     font-size: 14px;
   }
+
+  &:focus {
+    outline: 2px solid ${props => props.mode === "dark" ? props.colors.greenAccent[500] : props.colors.primary[600]};
+  }
 `;
 
 const StyledTextArea = styled.textarea`
@@ -117,6 +121,7 @@ const StyledTextArea = styled.textarea`
   padding: 10px;
   font-size: 16px;
   font-family: var(--FONT_RALEWAY);
+  resize: none;
   background-color: ${props => props.mode === "dark" ? props.colors.primary[400] : props.colors.primary[600]};
   color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
 
@@ -124,6 +129,10 @@ const StyledTextArea = styled.textarea`
     color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
     font-size: 14px;
+  }
+
+  &:focus {
+    outline: 2px solid ${props => props.mode === "dark" ? props.colors.greenAccent[500] : props.colors.primary[600]};
   }
 `;
 
@@ -185,7 +194,7 @@ const Contact = () => {
             <StyledInput colors={colors} mode={mode} placeholder="Your email" required/>
             <StyledInput colors={colors} mode={mode} placeholder="Your phone number(optional)" required/>
             <StyledTextArea colors={colors} mode={mode} placeholder="Message" required/>
-            <StyledButton colors={colors} mode={mode} type="submit">submit</StyledButton>
+            <StyledButton colors={colors} mode={mode} type="submit">send</StyledButton>
           </StyledForm>
         </LeftContent>
       </Left>
