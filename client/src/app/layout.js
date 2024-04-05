@@ -15,7 +15,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 // METHOD A layout WORK WITH METHOD A provider LAYOUT IN provider.js
 export default function RootLayout({ children }) {
-  const [theme, colorMode] = useMode();
   return (
     <html lang="en">
       <body className={inter.className}>

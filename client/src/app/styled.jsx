@@ -2,13 +2,7 @@
 
 import Image from "next/image";
 import styled from "styled-components";
-import { useTheme } from "@mui/material";
-import { tokens } from "./theme";
 import { xs, xm, m, l, xl, xl_2 } from "./responsive";
-import Link from "next/link";
-import HomeImage from "../../public/assests/hero.gif";
-import HomeLightImage from "../../public/assests/hero2.gif";
-import LogoImage from "../../public/assests/brands.png";
 
 /* || STYLED COMPONENTS */
 const HomePageMain = styled.div`
@@ -218,60 +212,18 @@ const BottomBrandsImage = styled(Image)`
   width: 100%;
 `;
 
-/* || END STYLED COMPONENTS */
 
-//////////////////////////////////////////////////////////////////////////////
-const Home = () => {
-  const theme = useTheme();
-  const mode = theme.palette.mode;
-  const colors = tokens(mode);
-
-  /////////////////////////////////////////////////////////////////////////////
-  return (
-    <HomePageMain colors={colors} mode={mode}>
-      <Left>
-        <LeftContent>
-          <LeftTitle colors={colors} mode={mode}>
-            What we do?
-          </LeftTitle>
-          <LeftHeader colors={colors} mode={mode}>
-            Dare to dream, create & innovate.
-          </LeftHeader>
-          <LeftParagraph colors={colors} mode={mode}>
-            We offer innovative solutions tailored to your needs. Our designs
-            combine aesthetic appeal with functionality, ensuring user-friendly
-            experiences that captivate audiences and drive results
-          </LeftParagraph>
-          <LeftBottom colors={colors} mode={mode}>
-            <StyledButton title="learn" colors={colors} mode={mode}>
-              learn more
-            </StyledButton>
-            <Link href={"/contact"}>
-              <StyledButton title="contact" colors={colors} mode={mode}>
-                contact
-              </StyledButton>
-            </Link>
-          </LeftBottom>
-          <BottomImageContainer>
-            <BottomBrandsImage
-              src={LogoImage}
-              alt="social logos"
-              loading="lazy"
-            />
-          </BottomImageContainer>
-        </LeftContent>
-      </Left>
-      <Right>
-        <StyledImage
-          src={mode === "dark" ? HomeImage : HomeLightImage}
-          alt="home page image"
-          width={400}
-          height={400}
-          loading="lazy"
-        />
-      </Right>
-    </HomePageMain>
-  );
-};
-
-export default Home;
+export {
+    HomePageMain,
+    StyledImage,
+    Left,
+    LeftContent,
+    LeftTitle,
+    LeftHeader,
+    LeftParagraph,
+    LeftBottom,
+    Right,
+    StyledButton,
+    BottomImageContainer,
+    BottomBrandsImage
+  };

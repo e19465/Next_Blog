@@ -1,6 +1,7 @@
 "use client";
 import styled from "styled-components";
 import PostCard from "@/components/postCard/PostCard";
+import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
 const BlogMain = styled.div`
   width: 100%;
@@ -14,18 +15,18 @@ const BlogMain = styled.div`
 `;
 
 
-
 const Blog = () => {
   return (
     <BlogMain>
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
     </BlogMain>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

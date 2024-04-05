@@ -12,7 +12,6 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useMediaQuery } from '@mui/material';
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { openDrawer, closeDrawer } from "@/redux/features/drawer/drawerSlice";
 
