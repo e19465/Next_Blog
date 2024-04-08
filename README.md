@@ -2,7 +2,7 @@
 
 ## tech stack
 - Next JS - frontend framework
-- Redux toolkit & react-redux - for state manegement
+- ReduxJS toolkit & react-redux - for state manegement
 - MUI + styled-components - for UI development
 - Node JS / express - backend framewor
 - MongoDB Atlas - dataase
