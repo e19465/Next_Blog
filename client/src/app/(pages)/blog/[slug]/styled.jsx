@@ -3,7 +3,6 @@ import Image from "next/image";
 import IconButton from "@mui/material/IconButton";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
-
 /* STYLED COMPONENTS */
 const SinglePostMain = styled.div`
   width: 100%;
@@ -13,11 +12,11 @@ const SinglePostMain = styled.div`
   overflow: auto;
 
   /* RESPONSIVE */
-  
+
   ${xs({
     flexDirection: "column",
   })}
-  
+
   ${xm({
     flexDirection: "column",
   })}
@@ -30,7 +29,6 @@ const SinglePostMain = styled.div`
   ${l({
     flexDirection: "column",
   })}
-  
 `;
 
 const ImageContainer = styled.div`
@@ -43,21 +41,25 @@ const ImageContainer = styled.div`
 
   ${xs({
     justifyContent: "center",
-    padding:"0px",
+    padding: "0px",
+    marginTop: "20px",
   })}
-  
+
   ${xm({
     justifyContent: "center",
-    padding:"0px",
+    padding: "0px",
+    marginTop: "20px",
   })}
   
   ${m({
     justifyContent: "center",
-    padding:"0px",
+    padding: "0px",
+    marginTop: "20px",
   })}
   
   ${l({
     flexDirection: "column",
+    marginTop: "20px",
   })}
 `;
 
@@ -81,7 +83,7 @@ const TextContainer = styled.div`
 
 const Title = styled.h1`
   padding: 10px;
-  font-size: 30px;
+  font-size: 20px;
   overflow: hidden;
 `;
 
@@ -89,25 +91,12 @@ const AuthurAndDateContainer = styled.div`
   display: flex;
 `;
 
-const AuthurImageDataContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 10px;
+const StyledP = styled.p`
+  font-size: 14px;
 `;
 
-const AuthurImage = styled(Image)`
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-`;
-
-const AuthurData = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+const StyledH3 = styled.h3`
+  font-size: 15px;
 `;
 
 const DateContainer = styled.div`
@@ -119,7 +108,7 @@ const DateContainer = styled.div`
 `;
 
 const PostContent = styled.div`
-  font-size: 20px;
+  font-size: 15px;
   padding: 20px;
   overflow: auto;
   flex-grow: 1;
@@ -147,20 +136,18 @@ const StyledIconButton = styled(IconButton)`
   padding: 10px;
 `;
 
-
 export {
-    SinglePostMain,
-    ImageContainer,
-    PostImage,
-    TextContainer,
-    Title,
-    AuthurAndDateContainer,
-    AuthurImageDataContainer,
-    AuthurImage,
-    AuthurData,
-    DateContainer,
-    PostContent,
-    IconsContainer,
-    IconButtonsContainer,
-    StyledIconButton
-  };
+  SinglePostMain,
+  ImageContainer,
+  PostImage,
+  TextContainer,
+  Title,
+  AuthurAndDateContainer,
+  DateContainer,
+  PostContent,
+  IconsContainer,
+  IconButtonsContainer,
+  StyledIconButton,
+  StyledP,
+  StyledH3,
+};

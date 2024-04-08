@@ -67,7 +67,7 @@ function WrappedLayout({ children }) {
           flexGrow: 1,
           zIndex: 5,
           overflow: "hidden",
-          paddingBottom: "30px",
+          // paddingBottom: "10px",
           background: mode === "dark" ? colors.primary[600] : "#fff",
         }}
       >

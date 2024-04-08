@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import PostCard from "@/components/postCard/PostCard";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
+import { post_data } from "@/app/data";
 
 const BlogMain = styled.div`
   width: 100%;
@@ -14,17 +15,19 @@ const BlogMain = styled.div`
   flex-wrap: wrap;
 `;
 
-
 const Blog = () => {
   return (
     <BlogMain>
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+      {post_data.map((post) => (
+        <PostCard
+          key={post.id}
+          img={post.img}
+          desc={post.description}
+          title={post.title}
+          id={post.id}
+          owner={post.owner_id}
+        />
+      ))}
     </BlogMain>
   );
 };

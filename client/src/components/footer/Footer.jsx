@@ -5,7 +5,7 @@ import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
 
 const FooterMain = styled.div`
-  height: 40px;
+  height: 20px;
   position: sticky;
   bottom: 0;
   z-index: 999;
@@ -14,9 +14,9 @@ const FooterMain = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 50px;
-  font-size: 15px;
-
+  padding: 5px 50px;
+  font-size: 10px;
+  /* background-color: green; */
   /* RESPONSIVE */
   ${xs({
     justifyContent: "center",

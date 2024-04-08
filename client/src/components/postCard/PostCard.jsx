@@ -12,13 +12,14 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.colors.greenAccent[500]};
   text-decoration: none;
   transition: all 0.5s;
+  font-size: 14px;
   color: ${props => props.mode === "dark" ? props.colors.blueAccent[200] : props.colors.blueAccent[300]};
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const PostCard = () => {
+const PostCard = ({img, title, desc, id, owner}) => {
   const theme = useTheme();
   const mode = theme.palette.mode;
   const colors = tokens(mode);
@@ -26,7 +27,7 @@ const PostCard = () => {
     <Card
       sx={{
         minWidth: 250,
-        maxWidth: 400,
+        maxWidth: 300,
         backgroundColor: colors.primary[400],
         margin: "20px",
       }}
@@ -35,14 +36,12 @@ const PostCard = () => {
         <CardMedia
           component="img"
           height="100"
-          image={
-            "https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=600"
-          }
+          image={img}
           alt="green iguana"
           sx={{
             objectFit: "cover",
             width: "100%",
-            height: "300px",
+            height: "250px",
             overflow: "hidden",
           }}
         />
@@ -51,10 +50,11 @@ const PostCard = () => {
             gutterBottom variant="h5" 
             component="div"
             sx={{
-              fontSize:"20px",
+              fontSize:"15px",
+              fontWeight:"bold",
             }}
           >
-            Lizard
+            {title}
           </Typography>
           <Typography
             variant="body2"
@@ -64,16 +64,15 @@ const PostCard = () => {
               overflow: "hidden",
               color:
                 mode === "dark" ? colors.gray[200] : colors.primary[200],
-              fontSize: "17px",
+              fontSize: "14px",
             }}
           >
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {desc}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <StyledLink colors={colors} mode={mode} href="/blog/post">
+        <StyledLink colors={colors} mode={mode} href={`blog/post/?id=${id}&owner=${owner}`}>
           Read More
         </StyledLink>
       </CardActions>

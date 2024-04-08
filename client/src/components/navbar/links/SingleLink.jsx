@@ -11,11 +11,15 @@ const StyledIconButton = styled.button`
     outline: none;
     cursor: pointer;
     width: 90px;
+    height: 30px;
     padding: 10px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 15px;
     transition: all 0.5s;
     margin-right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     color: ${props => props.active === "true" ? (
         props.theme.palette.mode === "dark" ? props.colors.primary[500] : props.colors.gray[900]
@@ -40,7 +44,7 @@ const SingleLink = ({link, theme,colors}) => {
     const pathName = usePathname();
 
   return (
-    <Link href={link.path} key={link.title} >
+    <Link style={{textDecoration:"none"}} href={link.path} key={link.title} >
         <StyledIconButton colors={colors} theme={theme} active={pathName === link.path ? "true" : "false"}>
             {link.title}
         </StyledIconButton>

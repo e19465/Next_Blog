@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import styled from "styled-components";
-import { xs, xm, m, l, xl, xl_2 } from "./responsive";
+import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
+
+
+ 
 
 /* || STYLED COMPONENTS */
-const HomePageMain = styled.div`
+const AboutPageMain = styled.div`
   background-color: ${(props) =>
     props.mode === "dark" ? props.colors.primary[600] : "#fff"};
   height: 100%;
   display: flex;
   overflow: auto;
-  /* background-color: red; */
 
   /* RESPONSIVE */
   ${xs({
@@ -55,6 +57,7 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;
 
 const LeftContent = styled.div`
@@ -65,12 +68,13 @@ const LeftContent = styled.div`
   align-items: center;
   justify-content: center;
 
+
   /* RESPONSIVE */
   ${m({
     width: "100%",
     padding: "10px 20px",
   })}
-
+  
   ${l({
     width: "100%",
     padding: "20px",
@@ -85,11 +89,12 @@ const LeftTitle = styled.h3`
 `;
 
 const LeftHeader = styled.h1`
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 40px;
   font-family: var(--FONT_VARELA_ROUND);
   line-height: 45px;
-  color: ${(props) => props.mode === "light" && props.colors.blueAccent[200]};
+  color: ${props => props.mode === "light" && props.colors.blueAccent[200]};
+
 
   /* RESPONSIVE */
   ${m({
@@ -111,14 +116,15 @@ const LeftHeader = styled.h1`
 const LeftParagraph = styled.p`
   font-family: var(--FONT_RALEWAY);
   font-size: 15px;
-  font-weight: ${(props) => props.mode === "light" && 700};
-  color: ${(props) => props.mode === "light" && props.colors.gray[300]};
-  margin-top: 10px;
+  font-weight: ${props => props.mode === "light" && 700};
+  color: ${props => props.mode === "light" && props.colors.gray[300]};
+  margin-top: 20px;
+
 `;
 
 const LeftBottom = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   margin-top: 20px;
   background-color: ${(props) =>
@@ -144,79 +150,76 @@ const LeftBottom = styled.div`
   })}
 `;
 
+const LeftBottomItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 15px;
+  text-align: center;
+
+  /* RESPONSIVE */
+  ${xs({
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: "10px 10px",
+  })}
+
+  ${l({
+    marginRight: "10px",
+  })}
+`;
+
+const LeftBottomHeader = styled.h2`
+  color: ${(props) => props.colors.blueAccent[400]};
+
+  /* RESPONSIVE */
+  ${l({
+    fontSize: "15px"
+  })}
+  
+  ${xl({
+    fontSize: "15px"
+  })}
+`;
+
+const LeftBottomP = styled.p`
+    font-size: 14px;
+    font-weight: ${props => props.mode === "light" && 700};
+    color: ${props => props.mode === "light" && props.colors.gray[300]};
+
+    /* RESPONSIVE */
+    ${l({
+    fontSize: "15px"
+    })}
+    
+    ${xl({
+    fontSize: "15px"
+    })}
+`;
+
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: 20px;
-  /* background-color: red; */
+  
 
   /* RESPONSIVE */
   ${m({
     justifyContent: "center",
     padding: "10px",
   })}
-
+  
   ${xl({
     justifyContent: "center",
     padding: "10px",
   })}
 `;
 
-const StyledButton = styled.button`
-  margin-right: 20px;
-  width: 180px;
-  font-size: 17px;
-  padding: 15px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  letter-spacing: 1px;
-  border-radius: 5px;
-  font-weight: 500;
-  transition: all 0.5s;
-  color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[900] : "#fff"};
-  background-color: ${(props) =>
-    props.title === "learn"
-      ? props.colors.blueAccent[400]
-      : props.colors.gray[200]};
-
-  &:hover {
-    filter: ${(props) =>
-      props.mode === "dark" ? "brightness(1.4)" : "brightness(1.4)"};
-  }
-
-  /* RESPONSIVE */
-  ${xs({
-    width: "180px",
-    fontSize: "15px",
-    padding: "10px",
-    marginBottom: "10px",
-  })}
-  ${m({
-    width: "180px",
-    fontSize: "15px",
-    padding: "10px",
-  })}
-`;
-
-const BottomImageContainer = styled.div`
-  width: 100%;
-  height: 50px;
-  overflow: hidden;
-  margin-top: 40px;
-`;
-
-const BottomBrandsImage = styled(Image)`
-  height: 100%;
-  width: 100%;
-`;
-
-
 export {
-    HomePageMain,
+    AboutPageMain,
     StyledImage,
     Left,
     LeftContent,
@@ -224,8 +227,8 @@ export {
     LeftHeader,
     LeftParagraph,
     LeftBottom,
+    LeftBottomItem,
+    LeftBottomHeader,
+    LeftBottomP,
     Right,
-    StyledButton,
-    BottomImageContainer,
-    BottomBrandsImage
   };

@@ -38,7 +38,6 @@ const Icons = ({colors, colorMode, theme}) => {
     const dispatch = useDispatch();
     const isMaxWidth380 = useMediaQuery('(max-width:768px)');
     const mode = theme.palette.mode;
-
   return (
     <IconMain>
         <StyledIconButton title="chnage color mode" onClick={colorMode.toggleColorMode} colors={colors} theme={theme}>

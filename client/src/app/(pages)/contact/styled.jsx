@@ -33,7 +33,7 @@ const ContactPageMain = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  width: 500px;
+  width: 400px;
   height: auto;
 
   /* RESPONSIVE */
@@ -93,7 +93,7 @@ const StyledInput = styled.input`
   padding: 10px;
   border-radius: 5px;
   letter-spacing: 1px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: var(--FONT_RALEWAY);
   background-color: ${props => props.mode === "dark" ? props.colors.primary[400] : props.colors.primary[600]};
   color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
@@ -101,7 +101,7 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
-    font-size: 14px;
+    font-size: 12px;
   }
 
   &:focus {
@@ -116,7 +116,7 @@ const StyledTextArea = styled.textarea`
   outline: none;
   border-radius: 5px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: var(--FONT_RALEWAY);
   resize: none;
   background-color: ${props => props.mode === "dark" ? props.colors.primary[400] : props.colors.primary[600]};
@@ -125,7 +125,7 @@ const StyledTextArea = styled.textarea`
   &::placeholder {
     color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
-    font-size: 14px;
+    font-size: 12px;
   }
 
   &:focus {
@@ -145,7 +145,8 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${props => props.mode==="dark" ? props.colors.primary[500] : props.colors.gray[900]};
+  font-weight: bold;
+  color: ${props => props.mode==="dark" ? props.colors.redAccent[700] : props.colors.gray[900]};
   font-size: 18px;
   letter-spacing: 1px;
   background-color: ${props => props.mode==="dark" ? props.colors.greenAccent[500] : props.colors.blueAccent[400]};
