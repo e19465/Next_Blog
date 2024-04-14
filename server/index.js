@@ -6,14 +6,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
-const corsOptions = require("./config/corsOptions");
+// const corsOptions = require("./config/corsOptions");
 dotenv.config();
 
 // define port
 const PORT = process.env.PORT || 5000;
 
 // middleware for cors
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Parse URL-encoded bodies (HTML form data)
 app.use(bodyParser.urlencoded({ extended: true }));
