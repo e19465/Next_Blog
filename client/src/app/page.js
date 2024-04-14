@@ -6,7 +6,8 @@ import Link from "next/link";
 import HomeImage from "../../public/assests/hero.gif";
 import HomeLightImage from "../../public/assests/hero2.gif";
 import LogoImage from "../../public/assests/brands.png";
-
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import {
   HomePageMain,
   StyledImage,
@@ -21,6 +22,7 @@ import {
   BottomImageContainer,
   BottomBrandsImage,
 } from "./styled";
+import { useSelector } from "react-redux";
 
 /* || END STYLED COMPONENTS */
 
@@ -29,6 +31,14 @@ const Home = () => {
   const theme = useTheme();
   const mode = theme.palette.mode;
   const colors = tokens(mode);
+  const router = useRouter();
+  const { user } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
 
   /////////////////////////////////////////////////////////////////////////////
   return (
