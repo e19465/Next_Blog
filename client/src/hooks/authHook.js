@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
-export const BASE_URL = "http://localhost:5000/api";
+export const BASE_URL = "https://next-blog-api-g2ys.onrender.com/api";
 
 const useAuthAxios = () => {
   const { user } = useSelector((store) => store.user);

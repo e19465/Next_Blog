@@ -13,7 +13,7 @@ import {
   loginSuccess,
   loginFailure,
 } from "@/redux/features/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Form = styled.form``;
 
@@ -35,6 +35,11 @@ const SubmitButton = styled.button`
   &:hover {
     background-color: dodgerblue;
   }
+
+  &:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
 `;
 
 const initialValues = {
@@ -51,6 +56,7 @@ const FormComponent = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [seePassword, setSeePassword] = useState(false);
+  const { isFetchingUser } = useSelector((store) => store.user);
   const handleFormSubmit = async (e) => {
     dispatch(loginStart());
     try {
@@ -134,7 +140,9 @@ const FormComponent = () => {
               ),
             }}
           />
-          <SubmitButton type="submit">login</SubmitButton>
+          <SubmitButton disabled={isFetchingUser} type="submit">
+            login
+          </SubmitButton>
         </Form>
       )}
     </Formik>
