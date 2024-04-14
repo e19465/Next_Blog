@@ -20,9 +20,10 @@ import {
 import { useTheme } from "@mui/material";
 import { tokens } from "@/app/theme";
 import { useEffect, useState } from "react";
-import { post_data } from "@/app/data";
 import Logo from "../../../../../public/assests/logo.png";
 import PostOwner from "@/components/postOwner/PostOwner";
+import axios from "axios";
+import { BASE_URL } from "@/hooks/authHook";
 ///////////////////////////////////////////////////////
 const SinglePost = ({ searchParams }) => {
   const theme = useTheme();
@@ -32,9 +33,24 @@ const SinglePost = ({ searchParams }) => {
   const owner_id = searchParams.owner;
   const [post, setPost] = useState(null);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
+
   useEffect(() => {
-    const new_post = post_data.filter((post) => post.id === parseInt(post_id));
-    setPost(new_post[0]);
+    const getOnePost = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/post/one/${post_id}`);
+        setPost(response.data);
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    };
+
+    getOnePost();
   }, [post_id]);
 
   return (
@@ -43,7 +59,7 @@ const SinglePost = ({ searchParams }) => {
         <SinglePostMain mode={mode} colors={colors}>
           <ImageContainer>
             <PostImage
-              src={post ? post.img : Logo}
+              src={post ? post.img.url : Logo}
               width={500}
               height={500}
               alt="single blog post image"
@@ -56,7 +72,7 @@ const SinglePost = ({ searchParams }) => {
               <PostOwner owner_id={owner_id} />
               <DateContainer>
                 <StyledP>Published</StyledP>
-                <StyledH3>{post.createdAt}</StyledH3>
+                <StyledH3>{formatDate(post.createdAt)}</StyledH3>
               </DateContainer>
             </AuthurAndDateContainer>
             <PostContent>{post.description}</PostContent>

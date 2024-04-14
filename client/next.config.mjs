@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.pexels.com",
+        hostname: "next14-express-blog-bucket.s3.amazonaws.com",
       },
     ],
   },

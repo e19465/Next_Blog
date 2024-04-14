@@ -25,7 +25,8 @@ const uploadToS3AndGetURL = async (
   name,
   fileType,
   folderName,
-  unique_uuid_user
+  unique_uuid_user,
+  unique_uuid_post
 ) => {
   try {
     // if you do image resizing with sharp
@@ -34,12 +35,19 @@ const uploadToS3AndGetURL = async (
     //   .resize({ height: 1920, width: 1080, fit: "contain" })
     //   .toBuffer();
     const unique_uuid_image = uuidv4();
+    let u_name;
 
-    const u_name = getUniqueNameForDP(
-      name,
-      unique_uuid_user,
-      unique_uuid_image
-    );
+    if (unique_uuid_post != null) {
+      u_name = getUniqueNameForDP(
+        name,
+        unique_uuid_user,
+        unique_uuid_post,
+        unique_uuid_image
+      );
+    } else {
+      u_name = getUniqueNameForDP(name, unique_uuid_user, unique_uuid_image);
+    }
+
     const key = `${MainProjectFolderName}/${folderName}/${u_name}`;
     const params = {
       Bucket: aws_bucket,

@@ -7,7 +7,7 @@ import { xs, xm, m, l, xl, xl_2 } from "./responsive";
 /* || STYLED COMPONENTS */
 const HomePageMain = styled.div`
   background-color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[600] : "#fff"};
+    props.$mode === "dark" ? props.$colors.primary[600] : "#fff"};
   height: 100%;
   display: flex;
   overflow: auto;
@@ -80,7 +80,7 @@ const LeftContent = styled.div`
 const LeftTitle = styled.h3`
   text-align: left;
   width: 100%;
-  color: ${(props) => props.colors.blueAccent[400]};
+  color: ${(props) => props.$colors.blueAccent[400]};
   font-size: 17px;
 `;
 
@@ -89,7 +89,7 @@ const LeftHeader = styled.h1`
   font-size: 40px;
   font-family: var(--FONT_VARELA_ROUND);
   line-height: 45px;
-  color: ${(props) => props.mode === "light" && props.colors.blueAccent[200]};
+  color: ${(props) => props.$mode === "light" && props.$colors.blueAccent[200]};
 
   /* RESPONSIVE */
   ${m({
@@ -111,8 +111,8 @@ const LeftHeader = styled.h1`
 const LeftParagraph = styled.p`
   font-family: var(--FONT_RALEWAY);
   font-size: 15px;
-  font-weight: ${(props) => props.mode === "light" && 700};
-  color: ${(props) => props.mode === "light" && props.colors.gray[300]};
+  font-weight: ${(props) => props.$mode === "light" && 700};
+  color: ${(props) => props.$mode === "light" && props.$colors.gray[300]};
   margin-top: 10px;
 `;
 
@@ -122,7 +122,7 @@ const LeftBottom = styled.div`
   width: 100%;
   margin-top: 20px;
   background-color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[600] : "#fff"};
+    props.$mode === "dark" ? props.$colors.primary[600] : "#fff"};
 
   /* RESPONSIVE */
 
@@ -177,15 +177,15 @@ const StyledButton = styled.button`
   font-weight: 500;
   transition: all 0.5s;
   color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[900] : "#fff"};
+    props.$mode === "dark" ? props.$colors.primary[900] : "#fff"};
   background-color: ${(props) =>
     props.title === "learn"
-      ? props.colors.blueAccent[400]
-      : props.colors.gray[200]};
+      ? props.$colors.blueAccent[400]
+      : props.$colors.gray[200]};
 
   &:hover {
     filter: ${(props) =>
-      props.mode === "dark" ? "brightness(1.4)" : "brightness(1.4)"};
+      props.$mode === "dark" ? "brightness(1.4)" : "brightness(1.4)"};
   }
 
   /* RESPONSIVE */
@@ -214,18 +214,17 @@ const BottomBrandsImage = styled(Image)`
   width: 100%;
 `;
 
-
 export {
-    HomePageMain,
-    StyledImage,
-    Left,
-    LeftContent,
-    LeftTitle,
-    LeftHeader,
-    LeftParagraph,
-    LeftBottom,
-    Right,
-    StyledButton,
-    BottomImageContainer,
-    BottomBrandsImage
-  };
+  HomePageMain,
+  StyledImage,
+  Left,
+  LeftContent,
+  LeftTitle,
+  LeftHeader,
+  LeftParagraph,
+  LeftBottom,
+  Right,
+  StyledButton,
+  BottomImageContainer,
+  BottomBrandsImage,
+};

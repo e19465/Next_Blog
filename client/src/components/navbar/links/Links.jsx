@@ -3,6 +3,8 @@
 import SingleLink from "./SingleLink";
 import styled from "styled-components";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
+import { useSelector } from "react-redux";
+import { getTokenInfo } from "@/helpers/getTokenInfo";
 
 const LinksMain = styled.div`
   display: flex;
@@ -40,9 +42,10 @@ export const links = [
   },
 ];
 
-const Links = ({ colors, theme }) => {
-  const isAdmin = true;
-  const isAuthenticated = true;
+const Links = ({ $colors, $theme }) => {
+  const { user } = useSelector((store) => store.user);
+  const access_payload = getTokenInfo(user?.access);
+  const isAdmin = access_payload?.isAdmin;
 
   return (
     <LinksMain>
@@ -50,19 +53,19 @@ const Links = ({ colors, theme }) => {
         <SingleLink
           key={link.title}
           link={link}
-          theme={theme}
-          colors={colors}
+          $theme={$theme}
+          $colors={$colors}
         />
       ))}
-      {isAuthenticated && isAdmin && (
+      {user && isAdmin && (
         <SingleLink
           key={"Admin"}
           link={{
             title: "Admin",
             path: "/admin",
           }}
-          theme={theme}
-          colors={colors}
+          $theme={$theme}
+          $colors={$colors}
         />
       )}
     </LinksMain>

@@ -32,26 +32,26 @@ const Home = () => {
 
   /////////////////////////////////////////////////////////////////////////////
   return (
-    <HomePageMain colors={colors} mode={mode}>
+    <HomePageMain $colors={colors} $mode={mode}>
       <Left>
         <LeftContent>
-          <LeftTitle colors={colors} mode={mode}>
+          <LeftTitle $colors={colors} $mode={mode}>
             What we do?
           </LeftTitle>
-          <LeftHeader colors={colors} mode={mode}>
+          <LeftHeader $colors={colors} $mode={mode}>
             Dare to dream, create & innovate.
           </LeftHeader>
-          <LeftParagraph colors={colors} mode={mode}>
+          <LeftParagraph $colors={colors} $mode={mode}>
             We offer innovative solutions tailored to your needs. Our designs
             combine aesthetic appeal with functionality, ensuring user-friendly
             experiences that captivate audiences and drive results
           </LeftParagraph>
-          <LeftBottom colors={colors} mode={mode}>
-            <StyledButton title="learn" colors={colors} mode={mode}>
+          <LeftBottom $colors={colors} $mode={mode}>
+            <StyledButton title="learn" $colors={colors} $mode={mode}>
               learn more
             </StyledButton>
             <Link href={"/contact"}>
-              <StyledButton title="contact" colors={colors} mode={mode}>
+              <StyledButton title="contact" $colors={colors} $mode={mode}>
                 contact
               </StyledButton>
             </Link>
@@ -70,8 +70,8 @@ const Home = () => {
           src={mode === "dark" ? HomeImage : HomeLightImage}
           alt="home page image"
           width={400}
-          height={400}
-          loading="lazy"
+          height="auto"
+          priority
         />
       </Right>
     </HomePageMain>

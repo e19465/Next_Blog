@@ -1,7 +1,9 @@
 "use client";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import drawerReducer from "./features/drawer/drawerSlice";
-
+import userReducer from "./features/user/userSlice";
+import logoutReducer from "./features/logout_model/logoutModelSlice";
+import postsReducer from "./features/posts/postsSlice";
 import {
   persistStore,
   persistReducer,
@@ -36,11 +38,14 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: [""],
+  whitelist: ["user"],
 };
 
 const rootReducer = combineReducers({
   drawer: drawerReducer,
+  user: userReducer,
+  logout_modal: logoutReducer,
+  posts: postsReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

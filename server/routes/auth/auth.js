@@ -23,7 +23,8 @@ router.post("/register", upload.single("image"), async (req, res) => {
         req.file.originalname,
         req.file.mimetype,
         "dp_images",
-        uniqueIdForUser
+        uniqueIdForUser,
+        null
       );
     } catch (err) {
       console.error(err);
@@ -36,6 +37,10 @@ router.post("/register", upload.single("image"), async (req, res) => {
   const req_username = req.body.username;
   const req_password = req.body.password;
   const req_email = req.body.email;
+  let isAdmin = false;
+  if (req.body.isAdmin) {
+    isAdmin = true;
+  }
 
   if (!req_username || !req_password || !req_email) {
     return res
@@ -51,6 +56,7 @@ router.post("/register", upload.single("image"), async (req, res) => {
       email: req_email,
       dp: image_info,
       unique_uuid: uniqueIdForUser,
+      isAdmin: isAdmin,
     });
 
     const saved_user = await new_user.save();
@@ -65,6 +71,8 @@ router.post("/register", upload.single("image"), async (req, res) => {
 router.post("/login", async (req, res) => {
   const req_username = req.body.username;
   const req_password = req.body.password;
+
+  // console.log(req_username, req_password);
 
   if (!req_username || !req_password) {
     return res.status(400).json({ error: "username and password required" });
@@ -90,7 +98,8 @@ router.post("/login", async (req, res) => {
       found_user._id,
       found_user.unique_uuid,
       found_user.username,
-      found_user.email
+      found_user.email,
+      found_user.isAdmin
     );
     const refresh_token = get_refresh_token(found_user._id);
     return res

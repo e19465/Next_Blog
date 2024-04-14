@@ -13,13 +13,16 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   transition: all 0.5s;
   font-size: 14px;
-  color: ${props => props.mode === "dark" ? props.colors.blueAccent[200] : props.colors.blueAccent[300]};
+  color: ${(props) =>
+    props.mode === "dark"
+      ? props.colors.blueAccent[200]
+      : props.colors.blueAccent[300]};
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const PostCard = ({img, title, desc, id, owner}) => {
+const PostCard = ({ img, title, desc, id, owner }) => {
   const theme = useTheme();
   const mode = theme.palette.mode;
   const colors = tokens(mode);
@@ -46,12 +49,13 @@ const PostCard = ({img, title, desc, id, owner}) => {
           }}
         />
         <CardContent>
-          <Typography 
-            gutterBottom variant="h5" 
+          <Typography
+            gutterBottom
+            variant="h5"
             component="div"
             sx={{
-              fontSize:"15px",
-              fontWeight:"bold",
+              fontSize: "15px",
+              fontWeight: "bold",
             }}
           >
             {title}
@@ -62,8 +66,7 @@ const PostCard = ({img, title, desc, id, owner}) => {
             sx={{
               height: "50px",
               overflow: "hidden",
-              color:
-                mode === "dark" ? colors.gray[200] : colors.primary[200],
+              color: mode === "dark" ? colors.gray[200] : colors.primary[200],
               fontSize: "14px",
             }}
           >
@@ -72,7 +75,11 @@ const PostCard = ({img, title, desc, id, owner}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <StyledLink colors={colors} mode={mode} href={`blog/post/?id=${id}&owner=${owner}`}>
+        <StyledLink
+          colors={colors}
+          mode={mode}
+          href={`blog/post/?id=${id}&owner=${owner}`}
+        >
           Read More
         </StyledLink>
       </CardActions>

@@ -32,4 +32,28 @@ const verify_access_token_and_admin = (req, res, next) => {
   });
 };
 
-module.exports = { verify_access_token, verify_access_token_and_admin };
+const verify_refresh_token = (req, res, next) => {
+  const refresh_token = req.body.token;
+
+  if (refresh_token) {
+    jwt.verify(
+      refresh_token,
+      process.env.REFRESH_TOKEN_SECRET,
+      (err, payload) => {
+        if (err) {
+          console.log(err);
+          return res.status(403).json({ error: "Invalid refresh token" });
+        }
+        next();
+      }
+    );
+  } else {
+    return res.status(401).json({ error: "Refresh token required" });
+  }
+};
+
+module.exports = {
+  verify_access_token,
+  verify_access_token_and_admin,
+  verify_refresh_token,
+};

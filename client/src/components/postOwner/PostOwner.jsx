@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { authurs } from "@/app/data";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
+import { BASE_URL } from "@/hooks/authHook";
 
 const AuthurImageDataContainer = styled.div`
   display: flex;
@@ -42,22 +43,30 @@ const PostOwner = ({ owner_id }) => {
   const [owner, setOwner] = useState(null);
 
   useEffect(() => {
-    const owner = authurs.filter((authur) => authur.id === parseInt(owner_id));
-    setOwner(owner[0]);
+    const getUser = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/user/one/${owner_id}`);
+        setOwner(response.data);
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    };
+    getUser();
   }, [owner_id]);
   return (
     <>
       {owner ? (
         <AuthurImageDataContainer>
           <AuthurImage
-            src={owner.img}
+            src={owner.dp.url}
             alt="authur image"
             loading="lazy"
             width={500}
             height={500}
           />
           <AuthurData>
-            <StyledP>Authur</StyledP>
+            <StyledP>Author</StyledP>
             <StyledH3>{owner.username}</StyledH3>
           </AuthurData>
         </AuthurImageDataContainer>

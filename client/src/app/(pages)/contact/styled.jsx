@@ -95,17 +95,26 @@ const StyledInput = styled.input`
   letter-spacing: 1px;
   font-size: 15px;
   font-family: var(--FONT_RALEWAY);
-  background-color: ${props => props.mode === "dark" ? props.colors.primary[400] : props.colors.primary[600]};
-  color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+  background-color: ${(props) =>
+    props.mode === "dark"
+      ? props.colors.primary[400]
+      : props.colors.primary[600]};
+  color: ${(props) =>
+    props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
 
   &::placeholder {
-    color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+    color: ${(props) =>
+      props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
     font-size: 12px;
   }
 
   &:focus {
-    outline: 2px solid ${props => props.mode === "dark" ? props.colors.greenAccent[500] : props.colors.primary[600]};
+    outline: 2px solid
+      ${(props) =>
+        props.mode === "dark"
+          ? props.colors.greenAccent[500]
+          : props.colors.primary[600]};
   }
 `;
 
@@ -119,17 +128,26 @@ const StyledTextArea = styled.textarea`
   font-size: 15px;
   font-family: var(--FONT_RALEWAY);
   resize: none;
-  background-color: ${props => props.mode === "dark" ? props.colors.primary[400] : props.colors.primary[600]};
-  color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+  background-color: ${(props) =>
+    props.mode === "dark"
+      ? props.colors.primary[400]
+      : props.colors.primary[600]};
+  color: ${(props) =>
+    props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
 
   &::placeholder {
-    color: ${props => props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+    color: ${(props) =>
+      props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
     font-size: 12px;
   }
 
   &:focus {
-    outline: 2px solid ${props => props.mode === "dark" ? props.colors.greenAccent[500] : props.colors.primary[600]};
+    outline: 2px solid
+      ${(props) =>
+        props.mode === "dark"
+          ? props.colors.greenAccent[500]
+          : props.colors.primary[600]};
   }
 `;
 
@@ -140,19 +158,25 @@ const StyledButton = styled.button`
   outline: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 550;
+  /* font-weight: 400; */
   padding: 10px;
   display: flex;
+  text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  color: ${props => props.mode==="dark" ? props.colors.redAccent[700] : props.colors.gray[900]};
-  font-size: 18px;
+  /* font-weight: bold; */
+  color: ${(props) =>
+    props.mode === "dark" ? "#fff" : props.colors.gray[900]};
+  font-size: 14px;
   letter-spacing: 1px;
-  background-color: ${props => props.mode==="dark" ? props.colors.greenAccent[500] : props.colors.blueAccent[400]};
+  background-color: ${(props) =>
+    props.mode === "dark" ? "dodgerblue" : props.colors.blueAccent[400]};
   transition: all 0.5s;
   &:hover {
-    background-color: ${props => props.mode==="dark" ? props.colors.greenAccent[700] : props.colors.blueAccent[200]};
+    background-color: ${(props) =>
+      props.mode === "dark"
+        ? props.colors.blueAccent[700]
+        : props.colors.blueAccent[200]};
   }
 `;
 
@@ -175,15 +199,14 @@ const Right = styled.div`
   })}
 `;
 
-
 export {
-    ContactPageMain,
-    StyledImage,
-    Left,
-    LeftContent,
-    StyledForm,
-    StyledInput,
-    StyledTextArea,
-    StyledButton,
-    Right
-  };
+  ContactPageMain,
+  StyledImage,
+  Left,
+  LeftContent,
+  StyledForm,
+  StyledInput,
+  StyledTextArea,
+  StyledButton,
+  Right,
+};

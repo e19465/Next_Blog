@@ -3,13 +3,13 @@ import { useTheme } from "@mui/material";
 import { tokens } from "@/app/theme";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
-
 const FooterMain = styled.div`
   height: 20px;
   position: sticky;
   bottom: 0;
   z-index: 999;
-  background-color: ${props => props.mode === "dark" ? props.colors.primary[600] : "#fff" };
+  background-color: ${(props) =>
+    props.$mode === "dark" ? props.$colors.primary[600] : "#fff"};
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const FooterMain = styled.div`
     padding: "30px 10px",
     textAlign: "center",
   })}
-  
+
   ${l({
     fontSize: "12px",
     padding: "10px",
@@ -37,7 +37,7 @@ const FooterMain = styled.div`
 `;
 
 const Left = styled.div`
-    ${xs({
+  ${xs({
     display: "none",
   })}
 `;
@@ -49,13 +49,9 @@ const Footer = () => {
   const mode = theme.palette.mode;
   const colors = tokens(mode);
   return (
-    <FooterMain colors={colors} mode={mode}>
-      <Left>
-        SDR
-      </Left>
-      <Right>
-        SDR creative throughts agency. all rights reserved @ 2024
-      </Right>
+    <FooterMain $colors={colors} $mode={mode}>
+      <Left>SDR</Left>
+      <Right>SDR creative throughts agency. all rights reserved @ 2024</Right>
     </FooterMain>
   );
 };

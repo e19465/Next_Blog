@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// const cookieSession = require("cookie-session");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -39,6 +40,9 @@ app.use("/api/", require("./routes/auth/auth"));
 
 //! user other routes
 app.use("/api/", require("./routes/user/user"));
+
+//! post routes
+app.use("/api/", require("./routes/post/post"));
 
 // app.use((err, req, res, next) => {
 //   if (err instanceof SyntaxError && err.status === 400 && "body" in err) {

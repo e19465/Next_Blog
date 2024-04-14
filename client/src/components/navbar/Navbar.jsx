@@ -7,6 +7,7 @@ import { tokens } from "@/app/theme";
 import { ColorModeContext } from "@/app/theme";
 import { useContext } from "react";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
+import { useSelector } from "react-redux";
 
 const NavMain = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const NavMain = styled.div`
   padding: 10px 50px;
   height: 50px;
   background-color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[600] : "#fff"};
+    props.$mode === "dark" ? props.$colors.primary[600] : "#fff"};
   position: sticky;
   top: 0;
   left: 0;
@@ -32,12 +33,12 @@ const Navbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-
+  const { user } = useSelector((store) => store.user);
   return (
-    <NavMain colors={colors} mode={theme.palette.mode}>
-      <Logo colors={colors} theme={theme} />
-      <Links colors={colors} colorMode={colorMode} theme={theme} />
-      <Icons colors={colors} colorMode={colorMode} theme={theme} />
+    <NavMain $colors={colors} $mode={theme.palette.mode}>
+      <Logo $colors={colors} $theme={theme} />
+      <Links $colors={colors} $colorMode={colorMode} $theme={theme} />
+      {user && <Icons $colors={colors} $colorMode={colorMode} $theme={theme} />}
     </NavMain>
   );
 };

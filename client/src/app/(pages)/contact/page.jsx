@@ -1,6 +1,5 @@
 "use client";
 
-;
 import { useTheme } from "@mui/material";
 import { tokens } from "@/app/theme";
 import AboutImage from "../../../../public/assests/contact.png";
@@ -14,9 +13,8 @@ import {
   StyledInput,
   StyledTextArea,
   StyledButton,
-  Right
+  Right,
 } from "./styled";
-
 
 /* || END STYLED COMPONENTS */
 
@@ -32,11 +30,33 @@ const Contact = () => {
       <Left>
         <LeftContent>
           <StyledForm colors={colors} mode={mode}>
-            <StyledInput colors={colors} mode={mode} placeholder="Your name" required/>
-            <StyledInput colors={colors} mode={mode} placeholder="Your email" required/>
-            <StyledInput colors={colors} mode={mode} placeholder="Your phone number(optional)" required/>
-            <StyledTextArea colors={colors} mode={mode} placeholder="Message" required/>
-            <StyledButton colors={colors} mode={mode} type="submit">send</StyledButton>
+            <StyledInput
+              colors={colors}
+              mode={mode}
+              placeholder="Your name"
+              required
+            />
+            <StyledInput
+              colors={colors}
+              mode={mode}
+              placeholder="Your email"
+              required
+            />
+            <StyledInput
+              colors={colors}
+              mode={mode}
+              placeholder="Your phone number(optional)"
+              required
+            />
+            <StyledTextArea
+              colors={colors}
+              mode={mode}
+              placeholder="Message"
+              required
+            />
+            <StyledButton colors={colors} mode={mode} type="submit">
+              send
+            </StyledButton>
           </StyledForm>
         </LeftContent>
       </Left>
