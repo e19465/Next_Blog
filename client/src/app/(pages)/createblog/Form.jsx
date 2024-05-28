@@ -25,6 +25,7 @@ const createPostValidationSchema = yup.object().shape({
 
 const FormComponent = () => {
   const [imageFile, setImageFile] = useState(null);
+  const [loading, setLoading] = useState(false);
   const authInstance = useAuthAxios();
   const handleFormSubmit = async (e) => {
     const formData = new FormData();
@@ -33,18 +34,21 @@ const FormComponent = () => {
     if (imageFile) {
       formData.append("image", imageFile);
     }
+    setLoading(true);
     try {
       const response = await authInstance.post("/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+      setLoading(false);
       console.log("Response:", response.data);
       e.title = "";
       e.description = "";
       setImageFile(null);
       alert("post published successfully");
     } catch (error) {
+      setLoading(false);
       console.error("Error:", error);
     }
   };
@@ -122,7 +126,16 @@ const FormComponent = () => {
             error={touched.description && !!errors.description}
             helperText={<ErrorMessage name="description" />}
           />
-          <SubmitButton>publish</SubmitButton>
+          <SubmitButton
+            type="submit"
+            disabled={loading}
+            style={{
+              cursor: loading ? "not-allowed" : "pointer",
+              backgroundColor: loading && "gray",
+            }}
+          >
+            {loading ? "publishing..." : "publish"}
+          </SubmitButton>
         </Form>
       )}
     </Formik>

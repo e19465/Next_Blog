@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { IconButton } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -14,6 +15,7 @@ import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { openDrawer, closeDrawer } from "@/redux/features/drawer/drawerSlice";
 import { openLogoutModal } from "@/redux/features/logout_model/logoutModelSlice";
+import { useRouter } from "next/navigation";
 
 const IconMain = styled.div`
   display: flex;
@@ -33,6 +35,7 @@ const StyledIconButton = styled(IconButton)`
 `;
 
 const Icons = ({ $colors, $colorMode, $theme }) => {
+  const router = useRouter();
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const isMaxWidth380 = useMediaQuery("(max-width:768px)");
@@ -40,21 +43,19 @@ const Icons = ({ $colors, $colorMode, $theme }) => {
 
   return (
     <IconMain>
-      {user && (
-        <StyledIconButton
-          title="chnage color mode"
-          onClick={$colorMode.toggleColorMode}
-          $colors={$colors}
-          $theme={$theme}
-        >
-          {$theme.palette.mode === "dark" ? (
-            <LightModeOutlinedIcon />
-          ) : (
-            <DarkModeOutlinedIcon style={{ color: $colors.primary[500] }} />
-          )}
-        </StyledIconButton>
-      )}
-      {user && (
+      <StyledIconButton
+        title="chnage color mode"
+        onClick={$colorMode.toggleColorMode}
+        $colors={$colors}
+        $theme={$theme}
+      >
+        {$theme.palette.mode === "dark" ? (
+          <LightModeOutlinedIcon />
+        ) : (
+          <DarkModeOutlinedIcon style={{ color: $colors.primary[500] }} />
+        )}
+      </StyledIconButton>
+      {user ? (
         <StyledIconButton
           onClick={() => dispatch(openLogoutModal())}
           title="logout"
@@ -65,8 +66,19 @@ const Icons = ({ $colors, $colorMode, $theme }) => {
             style={{ color: mode === "light" && $colors.primary[500] }}
           />
         </StyledIconButton>
+      ) : (
+        <StyledIconButton
+          onClick={() => router.push("/login")}
+          title="login"
+          $colors={$colors}
+          $theme={$theme}
+        >
+          <LoginIcon
+            style={{ color: mode === "light" && $colors.primary[500] }}
+          />
+        </StyledIconButton>
       )}
-      {user && (
+      {/* {user && (
         <Link href={"/settings"}>
           <StyledIconButton title="settings" $colors={$colors} $theme={$theme}>
             <SettingsIcon
@@ -87,7 +99,7 @@ const Icons = ({ $colors, $colorMode, $theme }) => {
             />
           </StyledIconButton>
         </Link>
-      )}
+      )} */}
       {isMaxWidth380 && (
         <StyledIconButton
           onClick={() => dispatch(openDrawer())}

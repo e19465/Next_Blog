@@ -44,7 +44,7 @@ const Logo = ({ $colors, $theme }) => {
           alt="Logo image of the blog website"
         />
         <LogoTitle $colors={$colors} $theme={$theme}>
-          blog
+          SD
         </LogoTitle>
       </LogoMain>
     </Link>

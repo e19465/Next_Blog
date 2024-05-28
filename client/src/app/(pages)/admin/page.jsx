@@ -1,7 +1,5 @@
 "use client";
-
-import { useTheme } from "@mui/material";
-import { tokens } from "@/app/theme";
+import { useSelector } from "react-redux";
 import FormComponent from "./Form";
 import UsersTable from "./UsersTable";
 import {
@@ -11,12 +9,20 @@ import {
   AddUserContainer,
   FieldSet,
 } from "./styled";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 //////////////////////////////////////////////////
 const Admin = () => {
-  const theme = useTheme();
-  const mode = theme.palette.mode;
-  const colors = tokens(mode);
+  const router = useRouter();
+  const { payload } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (!payload || payload.isAdmin === false) {
+      router.push("/");
+    }
+  }, [payload, router]);
+
   return (
     <AdminMain>
       <UserManageContainer>

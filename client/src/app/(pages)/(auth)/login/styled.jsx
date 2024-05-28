@@ -12,8 +12,8 @@ const LoginMain = styled.div`
 
 const Container = styled.div`
   width: 400px;
-  height: 500px;
-  background-color: #1f2a40;
+  height: 330px;
+  /* background-color: #1f2a40; */
   display: flex;
   flex-direction: column;
   align-items: center;

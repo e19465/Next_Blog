@@ -4,6 +4,7 @@ import drawerReducer from "./features/drawer/drawerSlice";
 import userReducer from "./features/user/userSlice";
 import logoutReducer from "./features/logout_model/logoutModelSlice";
 import postsReducer from "./features/posts/postsSlice";
+import postDeleteReducer from "./features/post_delete_modal/postDeleteSlice";
 import {
   persistStore,
   persistReducer,
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   logout_modal: logoutReducer,
   posts: postsReducer,
+  post_delete_modal: postDeleteReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

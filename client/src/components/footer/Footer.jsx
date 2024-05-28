@@ -51,7 +51,7 @@ const Footer = () => {
   return (
     <FooterMain $colors={colors} $mode={mode}>
       <Left>SDR</Left>
-      <Right>SDR creative throughts agency. all rights reserved @ 2024</Right>
+      <Right>SDR creative throughts. all rights reserved @ 2024</Right>
     </FooterMain>
   );
 };

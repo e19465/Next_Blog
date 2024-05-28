@@ -101,12 +101,18 @@ router.post("/login", async (req, res) => {
       found_user.email,
       found_user.isAdmin
     );
-    const refresh_token = get_refresh_token(found_user._id);
+    const refresh_token = get_refresh_token(
+      found_user._id,
+      found_user.unique_uuid,
+      found_user.username,
+      found_user.email,
+      found_user.isAdmin
+    );
     return res
       .status(200)
       .json({ access: access_token, refresh: refresh_token });
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 

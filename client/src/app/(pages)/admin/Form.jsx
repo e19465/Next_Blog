@@ -69,6 +69,7 @@ const FormComponent = () => {
       }
       setBtnActive(true);
     } catch (error) {
+      alert(err.response.data.error);
       setBtnActive(true);
       console.error("Error:", error);
     }
@@ -116,6 +117,7 @@ const FormComponent = () => {
             name="file"
             accept="image/*"
             style={{ display: "none" }}
+            required
             onChange={(e) => setImageFile(e.target.files[0])}
           />
           <TextField
@@ -207,10 +209,11 @@ const FormComponent = () => {
             }}
           />
           <SubmitButton
+            type="submit"
             disabled={btnActive ? false : true}
             $active={btnActive ? "true" : "false"}
           >
-            register
+            {btnActive ? "Register" : "Registering..."}
           </SubmitButton>
         </Form>
       )}

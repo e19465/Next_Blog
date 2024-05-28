@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import PostCard from "@/components/postCard/PostCard";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
-import { post_data } from "@/app/data";
+// import { post_data } from "@/app/data";
 import { IconButton, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
@@ -42,6 +42,7 @@ const Blog = () => {
   const dispatch = useDispatch();
   const [postData, setPostData] = useState(null);
   const { user } = useSelector((store) => store.user);
+
   useEffect(() => {
     const getPostData = async () => {
       dispatch(getPostsStart());
@@ -85,12 +86,14 @@ const Blog = () => {
             postData.map((post) => (
               <PostCard
                 key={post._id}
-                img={post.img.url}
+                img={post?.img?.url || null}
                 desc={post.description}
                 title={post.title}
                 id={post._id}
                 owner={post.owner_id}
                 postData={postData}
+                post_uuid={post.unique_uuid}
+                setPostData={setPostData}
               />
             ))
           ) : (

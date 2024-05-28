@@ -7,7 +7,7 @@ import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 /* || STYLED COMPONENTS */
 const ContactPageMain = styled.div`
   background-color: ${(props) =>
-    props.mode === "dark" ? props.colors.primary[600] : "#fff"};
+    props.$mode === "dark" ? props.$colors.primary[600] : "#fff"};
   height: 100%;
   display: flex;
   flex-direction: row-reverse;
@@ -96,15 +96,17 @@ const StyledInput = styled.input`
   font-size: 15px;
   font-family: var(--FONT_RALEWAY);
   background-color: ${(props) =>
-    props.mode === "dark"
-      ? props.colors.primary[400]
-      : props.colors.primary[600]};
+    props.$mode === "dark"
+      ? props.$colors.primary[400]
+      : props.$colors.primary[600]};
   color: ${(props) =>
-    props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+    props.$mode === "dark" ? props.$colors.gray[100] : props.$colors.gray[900]};
 
   &::placeholder {
     color: ${(props) =>
-      props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+      props.$mode === "dark"
+        ? props.$colors.gray[100]
+        : props.$colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
     font-size: 12px;
   }
@@ -112,9 +114,9 @@ const StyledInput = styled.input`
   &:focus {
     outline: 2px solid
       ${(props) =>
-        props.mode === "dark"
-          ? props.colors.greenAccent[500]
-          : props.colors.primary[600]};
+        props.$mode === "dark"
+          ? props.$colors.greenAccent[500]
+          : props.$colors.primary[600]};
   }
 `;
 
@@ -129,15 +131,17 @@ const StyledTextArea = styled.textarea`
   font-family: var(--FONT_RALEWAY);
   resize: none;
   background-color: ${(props) =>
-    props.mode === "dark"
-      ? props.colors.primary[400]
-      : props.colors.primary[600]};
+    props.$mode === "dark"
+      ? props.$colors.primary[400]
+      : props.$colors.primary[600]};
   color: ${(props) =>
-    props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+    props.$mode === "dark" ? props.$colors.gray[100] : props.$colors.gray[900]};
 
   &::placeholder {
     color: ${(props) =>
-      props.mode === "dark" ? props.colors.gray[100] : props.colors.gray[900]};
+      props.$mode === "dark"
+        ? props.$colors.gray[100]
+        : props.$colors.gray[900]};
     font-family: var(--FONT_RALEWAY);
     font-size: 12px;
   }
@@ -145,9 +149,9 @@ const StyledTextArea = styled.textarea`
   &:focus {
     outline: 2px solid
       ${(props) =>
-        props.mode === "dark"
-          ? props.colors.greenAccent[500]
-          : props.colors.primary[600]};
+        props.$mode === "dark"
+          ? props.$colors.greenAccent[500]
+          : props.$colors.primary[600]};
   }
 `;
 
@@ -158,25 +162,30 @@ const StyledButton = styled.button`
   outline: none;
   border-radius: 5px;
   cursor: pointer;
-  /* font-weight: 400; */
   padding: 10px;
   display: flex;
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  /* font-weight: bold; */
   color: ${(props) =>
-    props.mode === "dark" ? "#fff" : props.colors.gray[900]};
+    props.$mode === "dark" ? "#fff" : props.$colors.gray[900]};
   font-size: 14px;
   letter-spacing: 1px;
   background-color: ${(props) =>
-    props.mode === "dark" ? "dodgerblue" : props.colors.blueAccent[400]};
+    props.$mode === "dark" ? "dodgerblue" : props.$colors.blueAccent[400]};
   transition: all 0.5s;
+
   &:hover {
     background-color: ${(props) =>
-      props.mode === "dark"
-        ? props.colors.blueAccent[700]
-        : props.colors.blueAccent[200]};
+      props.$mode === "dark"
+        ? props.$colors.blueAccent[700]
+        : props.$colors.blueAccent[200]};
+  }
+
+  &:disabled {
+    background-color: ${(props) =>
+      props.$mode === "dark" ? "grey" : props.$colors.gray[300]};
+    cursor: not-allowed;
   }
 `;
 

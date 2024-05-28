@@ -3,7 +3,6 @@ import { useTheme } from "@mui/material";
 import { tokens } from "@/app/theme";
 import AboutImage from "../../../../public/assests/about.png";
 
-
 import {
   AboutPageMain,
   StyledImage,
@@ -18,7 +17,7 @@ import {
   LeftBottomP,
   Right,
 } from "./styled";
-
+import Social from "@/components/social/Social";
 
 //////////////////////////////////////////////////////////////////////////////
 const About = () => {
@@ -26,47 +25,31 @@ const About = () => {
   const mode = theme.palette.mode;
   const colors = tokens(mode);
 
-
   /////////////////////////////////////////////////////////////////////////////
   return (
     <AboutPageMain colors={colors} mode={mode}>
       <Left>
         <LeftContent>
           <LeftTitle colors={colors} mode={mode}>
-            About Agency
+            Hello👋 I&apos;m Sasindu
           </LeftTitle>
           <LeftHeader colors={colors} mode={mode}>
-            We create digital ideas that are bigger, bolder, brave and better
+            I build digital ideas that are bigger, bolder, brave and better
           </LeftHeader>
           <LeftParagraph colors={colors} mode={mode}>
-            We are a pioneering software company, driven by a commitment to
-            conceive digital ideas that are bigger, bolder, and braver, ensuring
-            our solutions are always better than the rest
+            I am a Computer Engineer with a passion for innovative technology
+            solutions. I specialize in web application development, utilizing C,
+            Java, Python, C++, HTML, CSS, JavaScript, and frameworks like
+            React.js, Next.js, Django, Node.js, Express.js, FastAPI, and Django
+            Rest Framework. I have hands-on experience with Arduino for hardware
+            design and AWS for cloud computing. Proficient in MySQL, MongoDB,
+            and PostgreSQL, I am a quick learner, constantly seeking to adopt
+            new technologies to enhance my skills and make impactful
+            contributions in the field of computer engineering.
           </LeftParagraph>
           <LeftBottom colors={colors} mode={mode}>
             <LeftBottomItem>
-              <LeftBottomHeader colors={colors} mode={mode}>
-                10 K+
-              </LeftBottomHeader>
-              <LeftBottomP colors={colors} mode={mode}>
-                contributors
-              </LeftBottomP>
-            </LeftBottomItem>
-            <LeftBottomItem>
-              <LeftBottomHeader colors={colors} mode={mode}>
-                234 K+
-              </LeftBottomHeader>
-              <LeftBottomP colors={colors} mode={mode}>
-                people reached
-              </LeftBottomP>
-            </LeftBottomItem>
-            <LeftBottomItem>
-              <LeftBottomHeader colors={colors} mode={mode}>
-                5 K+
-              </LeftBottomHeader>
-              <LeftBottomP colors={colors} mode={mode}>
-                services and plugins
-              </LeftBottomP>
+              <Social />
             </LeftBottomItem>
           </LeftBottom>
         </LeftContent>

@@ -11,6 +11,7 @@ const { deleteFromS3 } = require("../../functions/aws_delete");
 const router = require("express").Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+const mongoose = require("mongoose");
 
 //! create post
 router.post(
@@ -124,7 +125,7 @@ router.delete(
         is_aws_images_deleted = await deleteFromS3(post_uuid);
         await Post.findOneAndDelete({ unique_uuid: post_uuid });
         return res.status(200).json({
-          messsage: "post has been successfully deleted",
+          message: "post has been successfully deleted",
           aws_images_deleted: is_aws_images_deleted,
         });
       } else {
@@ -174,6 +175,61 @@ router.get("/post/all", async (req, res) => {
     }
     return res.status(200).json(all_posts);
   } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+//! like post
+router.patch("/post/like/:postId", verify_access_token, async (req, res) => {
+  const post_id = req.params.postId;
+  try {
+    const found_post = await Post.findById(post_id);
+    if (!found_post) {
+      return res.status(404).json({ error: "post not found" });
+    }
+    const found_user = await User.findById(req.user.user_id);
+    if (!found_user) {
+      return res.status(404).json({ error: "user not found" });
+    }
+    const user_like = found_post.likes.find(
+      (like) => like.user_id === req.user.user_id
+    );
+
+    let liked;
+    if (user_like) {
+      user_like.liked = !user_like.liked;
+      liked = user_like.liked;
+    } else {
+      found_post.likes.push({ user_id: req.user.user_id, liked: true });
+      liked = true;
+    }
+    await found_post.save();
+    return res.status(200).json(liked);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+//! get all likes for a post
+router.get("/post/likes/:postId", async (req, res) => {
+  const post_id = req.params.postId;
+  try {
+    const found_post = await Post.findById(post_id);
+    if (!found_post) {
+      return res.status(404).json({ error: "post not found" });
+    }
+
+    const result = await Post.aggregate([
+      { $match: { _id: found_post._id } },
+      { $unwind: "$likes" },
+      { $match: { "likes.liked": true } },
+      { $count: "likeCount" },
+    ]);
+    const likeCount = result.length > 0 ? result[0].likeCount : 0;
+
+    return res.status(200).json(likeCount);
+  } catch (err) {
+    console.log(err);
     return res.status(500).json({ error: err.message });
   }
 });

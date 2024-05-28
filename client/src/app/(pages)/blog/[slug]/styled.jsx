@@ -123,7 +123,7 @@ const IconsContainer = styled.div`
 `;
 
 const IconButtonsContainer = styled.div`
-  margin-right: 20px;
+  margin-right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

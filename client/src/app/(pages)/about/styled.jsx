@@ -4,9 +4,6 @@ import Image from "next/image";
 import styled from "styled-components";
 import { xs, xm, m, l, xl, xl_2 } from "@/app/responsive";
 
-
- 
-
 /* || STYLED COMPONENTS */
 const AboutPageMain = styled.div`
   background-color: ${(props) =>
@@ -57,7 +54,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
 `;
 
 const LeftContent = styled.div`
@@ -68,13 +64,12 @@ const LeftContent = styled.div`
   align-items: center;
   justify-content: center;
 
-
   /* RESPONSIVE */
   ${m({
     width: "100%",
     padding: "10px 20px",
   })}
-  
+
   ${l({
     width: "100%",
     padding: "20px",
@@ -93,8 +88,7 @@ const LeftHeader = styled.h1`
   font-size: 40px;
   font-family: var(--FONT_VARELA_ROUND);
   line-height: 45px;
-  color: ${props => props.mode === "light" && props.colors.blueAccent[200]};
-
+  color: ${(props) => props.mode === "light" && props.colors.blueAccent[200]};
 
   /* RESPONSIVE */
   ${m({
@@ -114,12 +108,12 @@ const LeftHeader = styled.h1`
 `;
 
 const LeftParagraph = styled.p`
+  text-align: justify;
   font-family: var(--FONT_RALEWAY);
   font-size: 15px;
-  font-weight: ${props => props.mode === "light" && 700};
-  color: ${props => props.mode === "light" && props.colors.gray[300]};
+  font-weight: ${(props) => props.mode === "light" && 700};
+  color: ${(props) => props.mode === "light" && props.colors.gray[300]};
   margin-top: 20px;
-
 `;
 
 const LeftBottom = styled.div`
@@ -175,27 +169,27 @@ const LeftBottomHeader = styled.h2`
 
   /* RESPONSIVE */
   ${l({
-    fontSize: "15px"
+    fontSize: "15px",
   })}
-  
+
   ${xl({
-    fontSize: "15px"
+    fontSize: "15px",
   })}
 `;
 
 const LeftBottomP = styled.p`
-    font-size: 14px;
-    font-weight: ${props => props.mode === "light" && 700};
-    color: ${props => props.mode === "light" && props.colors.gray[300]};
+  font-size: 14px;
+  font-weight: ${(props) => props.mode === "light" && 700};
+  color: ${(props) => props.mode === "light" && props.colors.gray[300]};
 
-    /* RESPONSIVE */
-    ${l({
-    fontSize: "15px"
-    })}
-    
-    ${xl({
-    fontSize: "15px"
-    })}
+  /* RESPONSIVE */
+  ${l({
+    fontSize: "15px",
+  })}
+
+  ${xl({
+    fontSize: "15px",
+  })}
 `;
 
 const Right = styled.div`
@@ -204,14 +198,13 @@ const Right = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding-left: 20px;
-  
 
   /* RESPONSIVE */
   ${m({
     justifyContent: "center",
     padding: "10px",
   })}
-  
+
   ${xl({
     justifyContent: "center",
     padding: "10px",
@@ -219,16 +212,16 @@ const Right = styled.div`
 `;
 
 export {
-    AboutPageMain,
-    StyledImage,
-    Left,
-    LeftContent,
-    LeftTitle,
-    LeftHeader,
-    LeftParagraph,
-    LeftBottom,
-    LeftBottomItem,
-    LeftBottomHeader,
-    LeftBottomP,
-    Right,
-  };
+  AboutPageMain,
+  StyledImage,
+  Left,
+  LeftContent,
+  LeftTitle,
+  LeftHeader,
+  LeftParagraph,
+  LeftBottom,
+  LeftBottomItem,
+  LeftBottomHeader,
+  LeftBottomP,
+  Right,
+};

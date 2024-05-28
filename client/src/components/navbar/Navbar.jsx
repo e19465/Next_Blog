@@ -38,7 +38,7 @@ const Navbar = () => {
     <NavMain $colors={colors} $mode={theme.palette.mode}>
       <Logo $colors={colors} $theme={theme} />
       <Links $colors={colors} $colorMode={colorMode} $theme={theme} />
-      {user && <Icons $colors={colors} $colorMode={colorMode} $theme={theme} />}
+      <Icons $colors={colors} $colorMode={colorMode} $theme={theme} />
     </NavMain>
   );
 };

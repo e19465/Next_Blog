@@ -128,39 +128,25 @@ router.get("/user/one/:user_id", async (req, res) => {
   }
 });
 
-//! refresh access token
-router.post(
-  "/new/refresh",
-  verify_access_token,
-  verify_refresh_token,
-  async (req, res) => {
-    const refreshToken = req.body.token;
-    if (!refreshToken) {
-      return res.status(401).json({ error: "refresh token required" });
-    }
-    const new_refresh_token = get_refresh_token(req.user.user_id);
-    return res.status(200).json(new_refresh_token);
-  }
-);
-//! refresh access token
-router.post(
-  "/access/refresh",
-  verify_access_token,
-  verify_refresh_token,
-  async (req, res) => {
-    const refreshToken = req.body.token;
-    if (!refreshToken) {
-      return res.status(401).json({ error: "refresh token required" });
-    }
-    const new_access_token = get_access_token(
-      req.user.user_id,
-      req.user.unique_uuid,
-      req.user.username,
-      req.user.email,
-      req.user.isAdmin
-    );
-    return res.status(200).json(new_access_token);
-  }
-);
+//! refresh tokens
+router.post("/tokens/refresh", verify_refresh_token, async (req, res) => {
+  const new_access_token = get_access_token(
+    req.user.user_id,
+    req.user.unique_uuid,
+    req.user.username,
+    req.user.email,
+    req.user.isAdmin
+  );
+  const new_refresh_token = get_refresh_token(
+    req.user.user_id,
+    req.user.unique_uuid,
+    req.user.username,
+    req.user.email,
+    req.user.isAdmin
+  );
+  return res
+    .status(200)
+    .json({ access: new_access_token, refresh: new_refresh_token });
+});
 
 module.exports = router;

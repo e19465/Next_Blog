@@ -1,17 +1,26 @@
-"use client";
-
-import styled from "styled-components";
-
-const LoadingMain = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: red;
-`;
+import Image from "next/image";
+import LOADING_IMG_GIF from "../../public/loading.gif";
 
 const Loading = () => {
   return (
-    <div>Loading</div>
-  )
-}
+    <section
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Image
+        src={LOADING_IMG_GIF}
+        alt="Page not found image"
+        priority
+        style={{ width: "300px", height: "300px", objectFit: "contain" }}
+      />
+    </section>
+  );
+};
 
-export default Loading
+export default Loading;

@@ -9,7 +9,11 @@ const verify_access_token = (req, res, next) => {
       jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
         if (err) {
           console.log(err);
-          return res.status(403).json({ error: "Invalid access token" });
+          if (err instanceof jwt.TokenExpiredError) {
+            return res.status(403).json({ error: "Access token has expired" });
+          } else {
+            return res.status(403).json({ error: "Invalid access token" });
+          }
         }
         req.user = payload;
         next();
@@ -33,7 +37,7 @@ const verify_access_token_and_admin = (req, res, next) => {
 };
 
 const verify_refresh_token = (req, res, next) => {
-  const refresh_token = req.body.token;
+  const refresh_token = req.body.refresh;
 
   if (refresh_token) {
     jwt.verify(
@@ -44,6 +48,7 @@ const verify_refresh_token = (req, res, next) => {
           console.log(err);
           return res.status(403).json({ error: "Invalid refresh token" });
         }
+        req.user = payload;
         next();
       }
     );

@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <LoginMain>
       <Container>
-        <SocialButtons />
+        {/* <SocialButtons /> */}
         <FieldSet>
           <legend>Sign In</legend>
           <FormComponent />

@@ -54,6 +54,7 @@ const PostOwner = ({ owner_id }) => {
     };
     getUser();
   }, [owner_id]);
+
   return (
     <>
       {owner ? (

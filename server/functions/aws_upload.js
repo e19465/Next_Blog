@@ -76,9 +76,7 @@ const uploadToS3AndGetURL = async (
       id: unique_uuid_image,
     };
   } catch (err) {
-    throw new Error(
-      "error occured during image uploading process please try again"
-    );
+    return err;
   }
 };
 

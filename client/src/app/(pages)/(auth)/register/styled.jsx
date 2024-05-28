@@ -19,7 +19,7 @@ const RegMain = styled.div`
 const Container = styled.div`
   width: 400px;
   min-height: 500px;
-  background-color: #1f2a40;
+  /* background-color: #1f2a40; */
   display: flex;
   flex-direction: column;
   align-items: center;
